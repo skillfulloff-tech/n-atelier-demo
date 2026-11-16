@@ -32,20 +32,22 @@ h1{font-size:clamp(3rem,7vw,6rem)}h2{font-size:clamp(2.05rem,5.5vw,4.5rem);text-
 .button{display:inline-flex;align-items:center;justify-content:center;gap:14px;padding:11px 18px;background:var(--wine);color:#fff;border:1px solid var(--wine);text-decoration:none;cursor:pointer;transition:background .22s,transform .22s,box-shadow .22s}
 .button:is(:hover,:focus-visible){background:#621831;color:#fff;transform:translateY(-2px);box-shadow:0 6px 14px #581b302a}.button:active{transform:scale(.97)}
 .menu-toggle{display:none;background:#fff;border:1px solid var(--line);width:42px;height:40px;cursor:pointer}.menu-toggle svg{width:20px;height:20px;vertical-align:middle}
-.hero{position:relative;display:grid;align-items:center;min-height:min(840px,calc(100svh - var(--header)));isolation:isolate;background:#f0eeee}
-.hero-photo{position:absolute;inset:0 0 0 31%;z-index:-2}.hero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#f1efef 21%,#f1efef 33%,#f1efefbf 53%,transparent 81%)}
-.hero-photo img,.frame img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
-.hero-photo img{object-position:64% center}.hero-copy{padding-block:52px}.hero-copy p{margin:18px 0 27px}
+.hero{display:grid;align-items:center;min-height:min(790px,calc(100svh - var(--header)));background:#f1efef}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);align-items:center;gap:clamp(22px,4vw,66px);padding-block:clamp(26px,4vw,60px)}
+.hero-photo{max-width:640px;justify-self:end}
+.hero-photo img,.frame img{display:block;width:100%;height:auto;filter:grayscale(1)}
+.hero-copy h1{font-size:clamp(2.6rem,6vw,6rem)}
+.hero-copy p{margin:18px 0 27px}
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,3vw,46px)}
 .service{border-top:1px solid var(--line);padding-top:18px}.service p{margin:12px 0}.service small{color:#615459}
-.portfolio{background:var(--pale)}.gallery{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,6vw,96px);max-width:1050px}
-.gallery-item{display:block;min-width:0;padding:0;border:0;background:#e9e4e6;cursor:zoom-in;text-decoration:none;overflow:hidden;aspect-ratio:1.49}
-.gallery-item:nth-child(2){margin-top:clamp(20px,5vw,80px)}.gallery-item img{transition:transform .5s}.gallery-item:hover img{transform:scale(1.035)}
+.portfolio{background:var(--pale)}.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:clamp(18px,4vw,64px);max-width:1120px}
+.gallery-item{display:block;min-width:0;padding:0;border:0;background:#e9e4e6;cursor:zoom-in;text-decoration:none;overflow:hidden}
+.gallery-item:nth-child(2){margin-top:clamp(15px,3vw,44px)}.gallery-item img{transition:filter .35s}.gallery-item:hover img{filter:grayscale(.65)}
 .steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(13px,2.5vw,36px);counter-reset:step}
 .steps li{border-top:1px solid var(--line);padding-top:15px;counter-increment:step;min-width:0}
 .steps li::before{content:counter(step,decimal-leading-zero);color:var(--wine);display:block;margin-bottom:15px;font-size:.78rem}
 .steps p,.about p{margin-top:10px}.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(25px,8vw,120px)}
-.about{background:var(--pale)}.about .frame{aspect-ratio:1.5;background:#e9e4e6}.about img{object-position:center}
+.about{background:var(--pale)}.about .frame{width:min(100%,460px);background:#e9e4e6}
 .faq{border-top:1px solid var(--line)}.faq details{padding:17px 0;border-bottom:1px solid var(--line);max-width:810px}.faq summary{cursor:pointer;font-weight:500}.faq details p{margin-top:10px}
 .contacts{background:var(--pale)}.addresses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-bottom:40px}
 .address{border-top:1px solid var(--line);padding-top:18px}.address address{font-style:normal;margin:8px 0}.address p{margin:8px 0}
@@ -67,10 +69,9 @@ h1{font-size:clamp(3rem,7vw,6rem)}h2{font-size:clamp(2.05rem,5.5vw,4.5rem);text-
   .grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media(max-width:600px){
-  .hero{min-height:calc(88svh - var(--header));align-items:end}
-  .hero-photo{inset:0}.hero-photo img{object-position:62% top}
-  .hero::after{background:linear-gradient(0deg,#f1efef 10%,#f1efeff0 35%,#f1efef5c 68%,transparent)}
-  .hero-copy{padding-block:38px}.hero-copy h1{font-size:clamp(2.65rem,13vw,4.25rem)}
+  .hero{min-height:auto}
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-photo{justify-self:stretch}.hero-copy h1{font-size:clamp(2.65rem,13vw,4.25rem)}
   .header-row>.button{padding:8px 10px;font-size:.82rem}.logo{font-size:1.38rem}
   .split,.addresses{grid-template-columns:minmax(0,1fr)}
   .gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px}
@@ -96,8 +97,10 @@ h1{font-size:clamp(3rem,7vw,6rem)}h2{font-size:clamp(2.05rem,5.5vw,4.5rem);text-
 </header>
 <main>
   <section class="hero" id="hero" aria-labelledby="hero-title">
-    <figure class="hero-photo"><img src="https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_656x340.jpg" srcset="https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_328x170.jpg 328w, https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_656x340.jpg 656w" sizes="(max-width:600px) 100vw,69vw" width="656" height="340" alt="Фотография ателье N’ателье в Воронеже" fetchpriority="high"></figure>
-    <div class="wrap hero-copy" data-reveal><h1 id="hero-title"><span class="accent">Ремонт</span><br>одежды</h1><p>Обсудите ремонт и посадку вещи с мастером в Воронеже.</p><a class="button" href="#booking">Записаться</a></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy" data-reveal><h1 id="hero-title"><span class="accent">Ремонт</span><br>одежды</h1><p>Обсудите ремонт и посадку вещи с мастером в Воронеже.</p><a class="button" href="#booking">Записаться</a></div>
+      <figure class="hero-photo"><img src="photos/dress-fitting.jpg" width="799" height="801" alt="Мастер поправляет белое платье на манекене" fetchpriority="high"></figure>
+    </div>
   </section>
   <section class="section wrap" id="services" aria-labelledby="services-title">
     <h2 class="title" id="services-title" data-reveal>Услуги <span class="accent">ателье</span></h2>
@@ -111,8 +114,9 @@ h1{font-size:clamp(3rem,7vw,6rem)}h2{font-size:clamp(2.05rem,5.5vw,4.5rem);text-
   <section class="section portfolio" id="portfolio" aria-labelledby="portfolio-title">
     <div class="wrap"><h2 class="title" id="portfolio-title" data-reveal>Фото <span class="accent">ателье</span></h2>
       <div class="gallery" aria-label="Фотографии из карточки ателье">
-        <a class="gallery-item frame" href="https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_656x340.jpg"><img src="https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_328x170.jpg" srcset="https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_328x170.jpg 328w, https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_656x340.jpg 656w" sizes="(max-width:600px) 74vw,42vw" width="328" height="170" loading="lazy" alt="Первый снимок из фотогалереи N’ателье на Загоровского"></a>
-        <a class="gallery-item frame" href="https://i8.photo.2gis.com/photo-gallery/ec434371-52f2-4505-adb8-9838d3914f13_656x340.jpg"><img src="https://i8.photo.2gis.com/photo-gallery/ec434371-52f2-4505-adb8-9838d3914f13_328x170.jpg" srcset="https://i8.photo.2gis.com/photo-gallery/ec434371-52f2-4505-adb8-9838d3914f13_328x170.jpg 328w, https://i8.photo.2gis.com/photo-gallery/ec434371-52f2-4505-adb8-9838d3914f13_656x340.jpg 656w" sizes="(max-width:600px) 74vw,42vw" width="328" height="170" loading="lazy" alt="Второй снимок из фотогалереи N’ателье на Загоровского"></a>
+        <a class="gallery-item frame" href="photos/lace-dress.jpg"><img src="photos/lace-dress.jpg" width="597" height="794" loading="lazy" alt="Белое свадебное платье с кружевными рукавами"></a>
+        <a class="gallery-item frame" href="photos/leather-jacket.jpg"><img src="photos/leather-jacket.jpg" width="602" height="803" loading="lazy" alt="Чёрная кожаная куртка с косой молнией"></a>
+        <a class="gallery-item frame" href="photos/dress-fitting.jpg"><img src="photos/dress-fitting.jpg" width="799" height="801" loading="lazy" alt="Белое платье без бретелей на манекене"></a>
       </div>
       <a class="row-link" href="https://2gis.ru/voronezh/gallery/firm/70000001044842716">Все снимки в 2ГИС</a>
     </div>
@@ -129,7 +133,7 @@ h1{font-size:clamp(3rem,7vw,6rem)}h2{font-size:clamp(2.05rem,5.5vw,4.5rem);text-
   </section>
   <section class="section about" id="about" aria-labelledby="about-title">
     <div class="wrap split">
-      <figure class="frame"><img src="https://i8.photo.2gis.com/photo-gallery/ec434371-52f2-4505-adb8-9838d3914f13_656x340.jpg" width="656" height="340" loading="lazy" alt="Снимок из карточки ателье на улице Загоровского"></figure>
+      <figure class="frame"><img src="photos/atelier-entrance.jpg" width="660" height="797" loading="lazy" alt="Вход в N’ателье с вывеской и перечнем услуг"></figure>
       <div data-reveal><h2 id="about-title">Об <span class="accent">ателье</span></h2><p>N’ателье находится в Воронеже, на втором этаже ЖК «Россия Пять столиц». По телефону можно обсудить задачу и уточнить, когда принести вещь.</p><a class="row-link" href="tel:+79803406989">Позвонить в ателье</a></div>
     </div>
   </section>
@@ -241,7 +245,10 @@ document.querySelectorAll('.gallery-item').forEach(link => {
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || !lightbox.showModal) return;
     event.preventDefault();
     photoTrigger = link;
-    fullPhoto.alt = link.querySelector('img').alt;
+    const thumbnail = link.querySelector('img');
+    fullPhoto.alt = thumbnail.alt;
+    fullPhoto.width = thumbnail.getAttribute('width');
+    fullPhoto.height = thumbnail.getAttribute('height');
     fullPhoto.src = link.href;
     lightbox.showModal();
   });
