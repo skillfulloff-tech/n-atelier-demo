@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ru" data-type="place">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="page-type" content="place">
+<meta name="site-kind" content="other">
+<meta name="page-kind" content="place">
+<meta name="description" content="Демонстрация сайта N’ателье, подготовленная студией «Сайтлайт» для владельца.">
+<meta name="robots" content="noindex, nofollow">
+<title>N’ателье · Концепт сайта</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT&family=Golos+Text:wght@400;500;600&display=swap');
+:root{--ink:#25201f;--wine:#8e2743;--line:#d8cdd0;--paper:#fff;--pale:#f8f4f5;--pad:clamp(20px,7vw,112px);--header:68px;--serif:'Old Standard TT',Georgia,serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:var(--paper);font:15px/1.55 'Golos Text',Arial,sans-serif}
+section[id],footer[id],#booking{scroll-margin-top:var(--header)}
+a{color:inherit;text-underline-offset:.24em}a:hover{color:var(--wine)}
+:focus-visible{outline:2px solid var(--wine);outline-offset:4px}
+button,input,textarea,select{font:inherit;color:inherit}
+h1,h2,h3,p,figure{margin:0}h1,h2,h3{font-family:var(--serif);font-weight:400}h1,h2{text-transform:uppercase;line-height:1.04;letter-spacing:-.035em}
+h1{font-size:clamp(3rem,7vw,6rem)}h2{font-size:clamp(2.05rem,5.5vw,4.5rem);text-wrap:balance}h3{font-size:clamp(1.45rem,2.4vw,2.1rem);line-height:1.12}
+.accent{color:var(--wine)}.wrap{width:min(100%,1600px);margin-inline:auto;padding-inline:var(--pad)}
+.section{padding-block:clamp(56px,9vw,134px)}.title{margin-bottom:clamp(26px,4vw,50px)}
+.muted{color:#615459}.row-link{display:inline-block;margin-top:22px}
+.header{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:calc(var(--header) - 1px)}
+.logo{font:1.6rem/1 var(--serif);text-decoration:none;white-space:nowrap}.nav{display:flex;align-items:center;gap:clamp(12px,2.2vw,35px);font-size:.85rem}
+.nav a{text-decoration:none;background:linear-gradient(var(--wine),var(--wine)) left bottom/0 1px no-repeat;transition:background-size .24s,color .24s}
+.nav a:is(:hover,:focus-visible,[aria-current]){background-size:100% 1px;color:var(--wine)}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:14px;padding:11px 18px;background:var(--wine);color:#fff;border:1px solid var(--wine);text-decoration:none;cursor:pointer;transition:background .22s,transform .22s,box-shadow .22s}
+.button:is(:hover,:focus-visible){background:#621831;color:#fff;transform:translateY(-2px);box-shadow:0 6px 14px #581b302a}.button:active{transform:scale(.97)}
+.menu-toggle{display:none;background:#fff;border:1px solid var(--line);width:42px;height:40px;cursor:pointer}.menu-toggle svg{width:20px;height:20px;vertical-align:middle}
+.hero{position:relative;display:grid;align-items:center;min-height:min(840px,calc(100svh - var(--header)));isolation:isolate;background:#f0eeee}
+.hero-photo{position:absolute;inset:0 0 0 31%;z-index:-2}.hero::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#f1efef 21%,#f1efef 33%,#f1efefbf 53%,transparent 81%)}
+.hero-photo img,.frame img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.hero-photo img{object-position:64% center}.hero-copy{padding-block:52px}.hero-copy p{margin:18px 0 27px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,3vw,46px)}
+.service{border-top:1px solid var(--line);padding-top:18px}.service p{margin:12px 0}.service small{color:#615459}
+.portfolio{background:var(--pale)}.gallery{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(18px,6vw,96px);max-width:1050px}
+.gallery-item{display:block;min-width:0;padding:0;border:0;background:#e9e4e6;cursor:zoom-in;text-decoration:none;overflow:hidden;aspect-ratio:1.49}
+.gallery-item:nth-child(2){margin-top:clamp(20px,5vw,80px)}.gallery-item img{transition:transform .5s}.gallery-item:hover img{transform:scale(1.035)}
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(13px,2.5vw,36px);counter-reset:step}
+.steps li{border-top:1px solid var(--line);padding-top:15px;counter-increment:step;min-width:0}
+.steps li::before{content:counter(step,decimal-leading-zero);color:var(--wine);display:block;margin-bottom:15px;font-size:.78rem}
+.steps p,.about p{margin-top:10px}.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(25px,8vw,120px)}
+.about{background:var(--pale)}.about .frame{aspect-ratio:1.5;background:#e9e4e6}.about img{object-position:center}
+.faq{border-top:1px solid var(--line)}.faq details{padding:17px 0;border-bottom:1px solid var(--line);max-width:810px}.faq summary{cursor:pointer;font-weight:500}.faq details p{margin-top:10px}
+.contacts{background:var(--pale)}.addresses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-bottom:40px}
+.address{border-top:1px solid var(--line);padding-top:18px}.address address{font-style:normal;margin:8px 0}.address p{margin:8px 0}
+.contact-body{align-items:start}.map{display:block;width:100%;aspect-ratio:4/3;border:1px solid var(--line);background:#eee}
+.form{display:grid;gap:13px}.form label{display:grid;gap:4px}.form input,.form textarea,.form select{display:block;width:100%;min-width:0;padding:10px 12px;background:#fff;border:1px solid #ab9ca1;border-radius:0}.form button{justify-self:start}.form output:empty{display:none}
+.form output{overflow-wrap:anywhere}
+.footer{padding-block:25px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:.85rem}
+.demo-note{background:var(--pale);padding-block:9px;font-size:.8rem;color:#615459}.demo-note .wrap{display:block}
+.lightbox{max-width:min(900px,calc(100% - 32px));width:100%;max-height:calc(100dvh - 32px);padding:0;border:0;background:#fff;color:var(--ink)}
+.lightbox::backdrop{background:#23191de3}.lightbox-bar{display:flex;justify-content:flex-end;padding:8px}.lightbox-close{cursor:pointer;padding:8px 14px;border:1px solid var(--line);background:#fff}
+.lightbox img{display:block;width:100%;height:auto;max-height:calc(100dvh - 105px);object-fit:contain}
+@keyframes reveal{from{opacity:.45;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:no-preference){.entered{animation:reveal .52s cubic-bezier(.16,1,.3,1) backwards}}
+@media(max-width:880px){
+  :root{--header:62px}
+  .menu-toggle{display:inline-grid;place-items:center;flex:none}.header-row{gap:8px}.header-row>.button{margin-left:auto}
+  .nav{position:absolute;top:100%;inset-inline:0;display:grid;gap:0;padding:9px var(--pad) 14px;background:#fff;border-bottom:1px solid var(--line)}
+  .nav a{padding:8px 0;justify-self:start}.nav:not(.open){display:none}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  .hero{min-height:calc(88svh - var(--header));align-items:end}
+  .hero-photo{inset:0}.hero-photo img{object-position:62% top}
+  .hero::after{background:linear-gradient(0deg,#f1efef 10%,#f1efeff0 35%,#f1efef5c 68%,transparent)}
+  .hero-copy{padding-block:38px}.hero-copy h1{font-size:clamp(2.65rem,13vw,4.25rem)}
+  .header-row>.button{padding:8px 10px;font-size:.82rem}.logo{font-size:1.38rem}
+  .split,.addresses{grid-template-columns:minmax(0,1fr)}
+  .gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px}
+  .gallery-item{flex:0 0 84%;scroll-snap-align:start}.gallery-item:nth-child(2){margin-top:0}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .form input,.form textarea,.form select{font-size:16px}
+}
+@media(max-width:390px){.grid{grid-template-columns:minmax(0,1fr)}.steps h3{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.nav a,.gallery-item img{transition:none}.button:is(:hover,:active,:focus-visible),.gallery-item:hover img{transform:none}}
+</style>
+</head>
+<body>
+<p class="demo-note"><span class="wrap">Концепт сайта для N’ателье от студии «Сайтлайт». Демо для владельца.</span></p>
+<header class="header" id="header">
+  <div class="header-row wrap">
+    <a class="logo" href="#hero">N’ателье</a>
+    <nav class="nav" id="menu" aria-label="Разделы сайта">
+      <a href="#services">Услуги</a><a href="#portfolio">Портфолио</a><a href="#process">Этапы</a><a href="#about">Об ателье</a><a href="#reviews">Отзывы</a><a href="#faq">Вопросы</a><a href="#contacts">Контакты</a>
+    </nav>
+    <a class="button" href="#booking">Записаться</a>
+    <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" aria-label="Открыть меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</header>
+<main>
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <figure class="hero-photo"><img src="https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_656x340.jpg" srcset="https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_328x170.jpg 328w, https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_656x340.jpg 656w" sizes="(max-width:600px) 100vw,69vw" width="656" height="340" alt="Фотография ателье N’ателье в Воронеже" fetchpriority="high"></figure>
+    <div class="wrap hero-copy" data-reveal><h1 id="hero-title"><span class="accent">Ремонт</span><br>одежды</h1><p>Обсудите ремонт и посадку вещи с мастером в Воронеже.</p><a class="button" href="#booking">Записаться</a></div>
+  </section>
+  <section class="section wrap" id="services" aria-labelledby="services-title">
+    <h2 class="title" id="services-title" data-reveal>Услуги <span class="accent">ателье</span></h2>
+    <div class="grid">
+      <article class="service"><h3>Индивидуальный пошив</h3><p>Изделие по меркам и выбранному фасону.</p><small>Возможность и цену уточняйте</small></article>
+      <article class="service"><h3>Ремонт и подгонка</h3><p>Обсудите ремонт изделия и корректировку посадки.</p><small>Цена после осмотра</small></article>
+      <article class="service"><h3>Переделка одежды</h3><p>Изменение фасона или деталей готовой вещи.</p><small>Возможность и цену уточняйте</small></article>
+      <article class="service"><h3>Свадебные и вечерние наряды</h3><p>Обсудите работу с платьем к торжеству.</p><small>Возможность и цену уточняйте</small></article>
+    </div>
+  </section>
+  <section class="section portfolio" id="portfolio" aria-labelledby="portfolio-title">
+    <div class="wrap"><h2 class="title" id="portfolio-title" data-reveal>Фото <span class="accent">ателье</span></h2>
+      <div class="gallery" aria-label="Фотографии из карточки ателье">
+        <a class="gallery-item frame" href="https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_656x340.jpg"><img src="https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_328x170.jpg" srcset="https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_328x170.jpg 328w, https://i6.photo.2gis.com/photo-gallery/a4d2ad54-548b-48c5-ab75-cf462b9ba7c3_656x340.jpg 656w" sizes="(max-width:600px) 74vw,42vw" width="328" height="170" loading="lazy" alt="Первый снимок из фотогалереи N’ателье на Загоровского"></a>
+        <a class="gallery-item frame" href="https://i8.photo.2gis.com/photo-gallery/ec434371-52f2-4505-adb8-9838d3914f13_656x340.jpg"><img src="https://i8.photo.2gis.com/photo-gallery/ec434371-52f2-4505-adb8-9838d3914f13_328x170.jpg" srcset="https://i8.photo.2gis.com/photo-gallery/ec434371-52f2-4505-adb8-9838d3914f13_328x170.jpg 328w, https://i8.photo.2gis.com/photo-gallery/ec434371-52f2-4505-adb8-9838d3914f13_656x340.jpg 656w" sizes="(max-width:600px) 74vw,42vw" width="328" height="170" loading="lazy" alt="Второй снимок из фотогалереи N’ателье на Загоровского"></a>
+      </div>
+      <a class="row-link" href="https://2gis.ru/voronezh/gallery/firm/70000001044842716">Все снимки в 2ГИС</a>
+    </div>
+  </section>
+  <section class="section wrap" id="process" aria-labelledby="process-title">
+    <h2 class="title" id="process-title" data-reveal>Как мы <span class="accent">работаем</span></h2>
+    <ol class="steps">
+      <li><h3>Консультация</h3><p>Обсуждаем вещь, задачу и сроки.</p></li>
+      <li><h3>Мерки</h3><p>Уточняем длину и посадку.</p></li>
+      <li><h3>Примерка</h3><p>Проверяем посадку, если нужна примерка.</p></li>
+      <li><h3>Работа</h3><p>Мастер ремонтирует или подгоняет изделие.</p></li>
+      <li><h3>Выдача</h3><p>Вы забираете готовую вещь.</p></li>
+    </ol>
+  </section>
+  <section class="section about" id="about" aria-labelledby="about-title">
+    <div class="wrap split">
+      <figure class="frame"><img src="https://i8.photo.2gis.com/photo-gallery/ec434371-52f2-4505-adb8-9838d3914f13_656x340.jpg" width="656" height="340" loading="lazy" alt="Снимок из карточки ателье на улице Загоровского"></figure>
+      <div data-reveal><h2 id="about-title">Об <span class="accent">ателье</span></h2><p>N’ателье находится в Воронеже, на втором этаже ЖК «Россия Пять столиц». По телефону можно обсудить задачу и уточнить, когда принести вещь.</p><a class="row-link" href="tel:+79803406989">Позвонить в ателье</a></div>
+    </div>
+  </section>
+  <section class="section wrap reviews" id="reviews" aria-labelledby="reviews-title">
+    <h2 class="title" id="reviews-title" data-reveal>Отзывы</h2>
+    <p>Отзывы клиентов доступны в карточке ателье.</p>
+    <a class="row-link" href="https://2gis.ru/voronezh/firm/70000001044842716/tab/reviews">Читать отзывы в 2ГИС</a>
+  </section>
+  <section class="section wrap faq" id="faq" aria-labelledby="faq-title">
+    <h2 class="title" id="faq-title" data-reveal>Частые <span class="accent">вопросы</span></h2>
+    <details><summary>Сколько стоит ремонт?</summary><p>Прайс пока не опубликован. Позвоните в ателье и опишите изделие и нужную работу.</p></details>
+    <details><summary>Нужно ли записываться на примерку?</summary><p>Позвоните перед визитом, чтобы согласовать время и уточнить, нужна ли примерка.</p></details>
+    <details><summary>Как найти вход?</summary><p>Ателье находится на 2-м этаже ЖК «Россия Пять столиц». Вход можно посмотреть в <a href="https://2gis.ru/voronezh/firm/70000001044842716">карточке 2ГИС</a>.</p></details>
+  </section>
+  <section class="section contacts" id="contacts" aria-labelledby="contacts-title">
+    <div class="wrap"><h2 class="title" id="contacts-title" data-reveal>Адреса и <span class="accent">запись</span></h2>
+      <div class="addresses">
+        <article class="address" id="zagorovskogo"><h3>На Загоровского</h3><address>Воронеж, ул. Загоровского, 1, 2 этаж</address><a href="tel:+79803406989">+7 980 340-69-89</a><p>Актуальные часы уточняйте по телефону.</p><a href="https://2gis.ru/voronezh/directions/points/%7C39.190954%2C51.713867%3B70000001044842716">Построить маршрут в 2ГИС</a></article>
+        <article class="address" id="second-location"><h3>Вторая точка</h3><p>Адрес и контакты уточняются.</p></article>
+      </div>
+      <div class="split contact-body">
+        <iframe class="map" loading="lazy" title="Карта района улицы Загоровского в Воронеже" src="https://www.openstreetmap.org/export/embed.html?bbox=39.182%2C51.710%2C39.200%2C51.718&amp;layer=mapnik&amp;marker=51.713867%2C39.190954"></iframe>
+        <form class="form" id="booking" aria-labelledby="booking-title">
+          <h3 id="booking-title">Записаться на Загоровского</h3>
+          <p class="muted">Форма поможет подготовить детали для звонка. Для записи позвоните в ателье.</p>
+          <label>Что нужно сделать?<select name="service" required><option value="">Выберите услугу</option><option>Ремонт и подгонка</option><option>Индивидуальный пошив</option><option>Переделка</option><option>Работа с нарядами</option></select></label>
+          <label>Расскажите о вещи<textarea name="description" rows="3" maxlength="500" required></textarea></label>
+          <button class="button" type="submit">Подготовить обращение</button>
+          <output role="status"></output>
+          <a href="tel:+79803406989">Позвонить: +7 980 340-69-89</a>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer wrap" id="footer"><span>Концепт сайта для N’ателье от студии «Сайтлайт». Демо для владельца.</span><a href="https://2gis.ru/voronezh/firm/70000001044842716">Фотографии и контакты в 2ГИС</a></footer>
+<dialog class="lightbox" aria-label="Увеличенная фотография">
+  <form method="dialog" class="lightbox-bar"><button class="lightbox-close">Закрыть</button></form>
+  <img width="656" height="340" loading="lazy" alt="Увеличенный снимок ателье">
+</dialog>
+<script>
+const menu = document.querySelector('#menu');
+const toggle = document.querySelector('.menu-toggle');
+function setMenu(open) {
+  menu.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', open);
+  toggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+}
+toggle.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+document.addEventListener('click', event => {
+  if (event.defaultPrevented || event.button !== 0 ||
+      event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  const link = event.target.closest('a[href^="#"]');
+  if (!link?.hash || link.target || link.hasAttribute('download')) return;
+  const target = document.getElementById(link.hash.slice(1));
+  if (!target) return;
+
+  event.preventDefault();
+  if (menu.classList.contains('open')) setMenu(false);
+  if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+  if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+  target.focus({preventScroll:true});
+  target.scrollIntoView({behavior:reduceMotion.matches ? 'instant' : 'smooth',block:'start'});
+});
+document.querySelector('#header').addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menu.classList.contains('open')) {
+    setMenu(false);
+    toggle.focus();
+  }
+});
+
+const links = Array.from(menu.querySelectorAll('a'));
+const sections = links.map(link => document.querySelector(link.hash));
+const header = document.querySelector('#header');
+let sectionFrame = null;
+function updateActive() {
+  sectionFrame = null;
+  const line = header.getBoundingClientRect().bottom + Math.min(window.innerHeight * .18, 140);
+  const current = sections.findLastIndex(section => section.getBoundingClientRect().top <= line);
+  links.forEach((link, index) => {
+    if (index === current) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+}
+function scheduleActive() {
+  if (sectionFrame === null) sectionFrame = requestAnimationFrame(updateActive);
+}
+window.addEventListener('scroll', scheduleActive, {passive:true});
+window.addEventListener('resize', scheduleActive);
+updateActive();
+
+if ('IntersectionObserver' in window && !reduceMotion.matches) {
+  const reveal = new IntersectionObserver((entries, observer) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add('entered');
+      observer.unobserve(entry.target);
+    }
+  }, {threshold:.16});
+  document.querySelectorAll('[data-reveal]').forEach(element => reveal.observe(element));
+}
+
+const lightbox = document.querySelector('.lightbox');
+const fullPhoto = lightbox.querySelector('img');
+let photoTrigger;
+document.querySelectorAll('.gallery-item').forEach(link => {
+  link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || !lightbox.showModal) return;
+    event.preventDefault();
+    photoTrigger = link;
+    fullPhoto.alt = link.querySelector('img').alt;
+    fullPhoto.src = link.href;
+    lightbox.showModal();
+  });
+});
+lightbox.addEventListener('click', event => {
+  if (event.target === lightbox) lightbox.close();
+});
+lightbox.addEventListener('close', () => photoTrigger?.focus());
+
+const booking = document.querySelector('#booking');
+booking.addEventListener('submit', event => {
+  event.preventDefault();
+  const details = new FormData(booking);
+  booking.querySelector('output').textContent = 'Для звонка: ' + details.get('service') + ' — ' + details.get('description');
+});
+</script>
+</body>
+</html>
